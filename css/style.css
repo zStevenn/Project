@@ -1,0 +1,82 @@
+/* Global */
+.bg-blue {
+  padding: 2vh 0vh 2vh 0vh;
+  background-color: rgb(0, 163, 228);
+  color: #fff;
+}
+
+p {
+  font-size: 20px;
+}
+
+h1 {
+  color: #0077a8;
+}
+
+.btn-primary {
+  background-color: #0077a8;
+  padding: .7rem;
+  font-size: 1.5rem;
+}
+
+.btn-primary:active, .btn-primary:hover {
+  background-color: #00608a;
+}
+
+.btn-secondary {
+  background-color: #fff;
+  color: #0089C1;
+}
+
+.btn-secondary:active, .btn-secondary:hover {
+  background-color: #fff;
+  color: #0089C1;
+}
+
+/* Navbar */
+nav {
+  background-color: #0089C1;
+  display: inline-block;
+}
+
+nav ul>li>a {
+  font-size: 30px;
+  font-weight: 450;
+  color: #fff;
+  padding: 6vh 2vh 6vh 2vh;
+  display: block;
+  text-decoration: none;
+}
+
+nav ul>li>a:hover, nav li.active>a {
+  background-color: #0077a8;
+  color: #fff;
+  text-decoration: none;
+  transition: all ease-in-out 0.2s;
+}
+
+.navbar {
+  padding: 0 0 0 8vh;
+}
+
+.acc-link {
+  color: grey;
+  padding: .5vh .5vh;
+}
+
+.acc-link:hover {
+  color: grey;
+  
+}
+
+/* Home page */
+.home-content {
+  padding: 3vh 3vh 0vh 0vh;
+}
+
+.home-video {
+  margin: 1vh 1vh;
+  padding: 2vh 2vh;
+  background-color: #00608a;
+  color: #fff;
+}
