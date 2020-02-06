@@ -3,23 +3,12 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-6 home-content">
-        <h1>Afasie verenging nederland</h1>
+        <h1>Patienten vereniging hersenletsel</h1>
         <p>
-          Afasie vereniging focust zich op het helpen van mensen met afasie en bewustzijn over afasie te verspreiden.
-          <ul>
-            <li>
-              <p>spreken</p>
-            </li>
-            <li>
-              <p>begrijpen</p>
-            </li>
-            <li>
-              <p>lezen</p>
-            </li>
-            <li>
-              <p>schrijven</p>
-            </li>
-          </ul>
+          Patienten vereniging hersenletsel focused zich op het verspreiden van informatie over verschillenden soorten hersenletsel,
+          deze website is gericht op afasie. Een taalstoornis die komt door (je zal het nooit raden!) hersenletsel.
+          voor meer informatie kunt u terecht op onze informatie pagina (zie knop hieronder) op deze website hebben we ook de "Afasie Experience!"
+          een spel waarin je kan ervaren hoe het is om afasie te hebben.
           <a class="btn btn-primary btn-home" href="index.php?content=informatie" role="button">Lees meer over afasie</a>
         </p>
       </div>
