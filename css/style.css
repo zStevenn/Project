@@ -1,7 +1,22 @@
 /* Global */
+.bg-grey {
+  background-color: #0029591a;
+  box-shadow: inset 0px 0px 10px 0px #00295933;
+  padding: 3vh 0;
+}
+
+.bg-white {
+  background-color: #fff;
+  padding: 3vh 0;
+}
+
 .bg-blue {
   padding: 2vh 0vh 2vh 0vh;
   background-color: rgb(0, 163, 228);
+  color: #fff;
+}
+
+.bg-blue h1 {
   color: #fff;
 }
 
@@ -35,8 +50,9 @@ h1 {
 
 /* Navbar */
 nav {
-  background-color: #0089C1;
+  background-color: #0089c1;
   display: inline-block;
+  box-shadow: inset 0px 0px 5px 0px #016a85;
 }
 
 nav ul>li>a {
@@ -60,18 +76,31 @@ nav ul>li>a:hover, nav li.active>a {
 }
 
 .acc-link {
+  margin-right: 3vh;
   color: grey;
   padding: .5vh .5vh;
+  font-size: 15px;
 }
 
 .acc-link:hover {
-  color: grey;
-  
+  color: grey; 
 }
 
+
 /* Home page */
+.btn-home {
+  border: none;
+}
+
+.btn-home:active, .btn-home:hover {
+  transition: all ease-in-out 0.2s;
+  box-shadow: inset 0px 0px 5px 0px #00608a;
+  background-color: #d4edfc;
+  color: #00608a;
+}
+
 .home-content {
-  padding: 3vh 3vh 0vh 0vh;
+  padding: 3vh 3vh 3vh 0vh;
 }
 
 .home-video {
@@ -79,4 +108,31 @@ nav ul>li>a:hover, nav li.active>a {
   padding: 2vh 2vh;
   background-color: #00608a;
   color: #fff;
+}
+
+.home-card {
+  min-height: 250px;
+  background-color: #0089c1;
+  color: #fff;
+  box-shadow: inset 0px 0px 5px 0px #016a85;
+  border-left: 5px solid;
+  border-left-color: #016a85;
+}
+
+.home-card a {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.home-card a:active, .home-card a:hover {
+  color: #023a52;
+}
+
+.home-card .card-title {
+  font-weight: 700;
+}
+
+.home-card .card-text {
+  min-height: 150px;
 }
