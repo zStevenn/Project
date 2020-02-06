@@ -3,12 +3,9 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-6 home-content">
-        <h1>Over afasie</h1>
+        <h1>Afasie verenging nederland</h1>
         <p>
-          Afasie is een <strong>taal</strong>stoornis. Afasie, a (= niet) fasie (=spreken) betekent dat iemand iets
-          <strong>niet</strong> meer kan <strong>zeggen</strong> zoals hij dat wil. Alleen wanneer de afasie <strong>zeer
-            ernstig</strong> is, kan iemand echt <strong>helemaal niet</strong> meer spreken. <br> Mensen met afasie
-          kunnen problemen hebben met:
+          Afasie vereniging focust zich op het helpen van mensen met afasie en bewustzijn over afasie te verspreiden.
           <ul>
             <li>
               <p>spreken</p>
