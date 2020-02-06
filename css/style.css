@@ -12,7 +12,7 @@
 
 .bg-blue {
   padding: 2vh 0vh 2vh 0vh;
-  background-color: rgb(0, 163, 228);
+  background-color: #0089c1;
   color: #fff;
 }
 
@@ -77,15 +77,18 @@ nav ul>li>a:hover, nav li.active>a {
 
 .acc-link {
   margin-right: 3vh;
-  color: grey;
+  color: #fff;
   padding: .5vh .5vh;
   font-size: 15px;
 }
 
 .acc-link:hover {
-  color: grey; 
+  color: #fff; 
 }
 
+.upper-navbar {
+  background-color: #0089c1;
+}
 
 /* Home page */
 .btn-home {

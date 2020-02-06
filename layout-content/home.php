@@ -6,20 +6,7 @@
         <h1>Afasie verenging nederland</h1>
         <p>
           Afasie vereniging focust zich op het helpen van mensen met afasie en bewustzijn over afasie te verspreiden.
-          <ul>
-            <li>
-              <p>spreken</p>
-            </li>
-            <li>
-              <p>begrijpen</p>
-            </li>
-            <li>
-              <p>lezen</p>
-            </li>
-            <li>
-              <p>schrijven</p>
-            </li>
-          </ul>
+
           <a class="btn btn-primary btn-home" href="index.php?content=informatie" role="button">Lees meer over afasie</a>
         </p>
       </div>
@@ -36,6 +23,7 @@
     </div>
   </div>
 </div>
+hr
 
 <!-- Card Links -->
 <div class="container-fluid bg-white">

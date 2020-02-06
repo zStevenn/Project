@@ -1,9 +1,11 @@
 <?php $content = (isset($_GET['content']) ? $_GET['content'] : false); ?>
 <div class="upper-navbar">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <a href="index.php?content=inloggen" class="float-right acc-link">Mijn account</a>
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <a href="index.php?content=inloggen" class="float-right acc-link">Mijn account</a>
+        </div>
       </div>
     </div>
   </div>
