@@ -2,7 +2,6 @@
 .bg-grey {
   background-color: #0029591a;
   box-shadow: inset 0px 0px 10px 0px #00295933;
-  padding: 3vh 0;
 }
 
 .bg-white {
@@ -18,10 +17,6 @@
 
 .bg-blue h1 {
   color: #fff;
-}
-
-p {
-  font-size: 20px;
 }
 
 h1 {
@@ -135,4 +130,8 @@ nav ul>li>a:hover, nav li.active>a {
 
 .home-card .card-text {
   min-height: 150px;
+}
+
+.info-nav li.active{
+  color: #023a52;
 }
