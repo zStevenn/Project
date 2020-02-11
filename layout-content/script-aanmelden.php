@@ -1,4 +1,11 @@
 <?php
+  
+  // alert("Hello World");
+  
+  // function alert($msg) {
+  //     echo "<script type='text/javascript'>alert('$msg');</script>";
+  // }
+  // exit();
 
   include("./php-scripts/connectDB.php");
   include("./php-scripts/functions.php");
@@ -15,8 +22,10 @@
 
   if (mysqli_num_rows($result)) {
     // Email is al in gebruik
-    echo '<div class="alert alert-info" role="alert">Het door u ingevoerde e-mailadres is al in gebruik, kies een ander e-mailadres</div>';
-    header("Refresh: 4; url=./index.php?content=aanmelden");
+    // echo '<div class="alert alert-info" role="alert">Het door u ingevoerde e-mailadres is al in gebruik, kies een ander e-mailadres</div>';
+    $_SESSION["error"] = true;
+    $_SESSION["email"] = $email; 
+    header("Location: index.php?content=aanmelden");
   } else {
     $password = 'geheim';
     $password_hash = password_hash($password, PASSWORD_BCRYPT);

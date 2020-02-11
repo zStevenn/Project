@@ -1,4 +1,5 @@
-<?php ob_start(); session_start(); ?>
+<?php ob_start();
+session_start(); ?>
 <!doctype html>
 <html lang="en">
 
@@ -22,8 +23,7 @@
   <?php
   if (isset($_GET["content"])) {
     include("./layout-content/" . $_GET["content"] . ".php");
-  } 
-   else {
+  } else {
     include("./layout-content/home.php");
   }
   ?>

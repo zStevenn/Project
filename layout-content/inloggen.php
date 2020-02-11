@@ -12,11 +12,9 @@
       <input type="password" id="password" class="fadeIn third" name="login" placeholder="Password">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
-
     <!-- Link naar aanmeld pagina -->
     <div id="formFooter">
       <a class="underlineHover" href="index.php?content=aanmelden">Nog geen account? Meld je aan.</a>
     </div>
-    
   </div>
 </div>
