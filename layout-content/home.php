@@ -2,7 +2,7 @@
 <div class="container-fluid zorg-bg">
   <div class="container">
     <div class="row">
-      <div class="col-12 col-md-5 home-content">
+      <div class="col-12 col-lg-5 home-content">
         <h2>Patienten Vereniging Hersenletsel</h2>
         <p>
           PVH richt zich op het verspreiden van informatie over verschillenden soorten hersenletsel.
@@ -32,7 +32,7 @@
         <div class="card home-card">
           <div class="card-body">
             <h5 class="card-title">Afasie Experience!</h5>
-            <p class="card-text"><img src="./img/game.png" alt="game.png"></p>
+            <p class="card-text"><img class="responsive-img" src="./img/game.png" alt="game.png"></p>
             <a href="index.php?content=spel" class="card-link">>> Probeer nu</a>
           </div>
         </div>

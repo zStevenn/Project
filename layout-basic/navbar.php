@@ -4,7 +4,8 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <a href="index.php?content=inloggen" class="float-right acc-link">Mijn account</a>
+          <a href="index.php?content=redirect" class="float-right acc-link">Mijn account</a>
+          <?php if(isset($_SESSION["id"])) echo "<a href='index.php?content=uitloggen' class='float-right acc-link'>Logout</a>";?>
         </div>
       </div>
     </div>
@@ -23,8 +24,8 @@
             <a href="./index.php?content=home">Home</a></li>
           <li class="<?php if ($content == 'informatie') echo 'active' ?>">
             <a href="index.php?content=informatie">Informatie</a></li>
-          <li class="<?php if ($content == 'Test jezelf') echo 'active' ?>">
-            <a href="index.php?content=testjezelf">Test jezelf</a></li>
+          <li class="<?php if ($content == 'spel') echo 'active' ?>">
+            <a href="index.php?content=spel">Spel</a></li>
           <li class="<?php if ($content == 'contact') echo 'active' ?>">
             <a href="index.php?content=contact">Contact</a></li>
           <li class="<?php if ($content == 'highscores') echo 'active' ?>">

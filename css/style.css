@@ -1,4 +1,13 @@
 /* Global */
+html {
+  scroll-behavior: smooth;
+}
+
+.responsive-img {
+  width: 100%;
+  height: auto;
+}
+
 .bg-grey {
   background-color: #0029591a;
   box-shadow: inset 0px 0px 5px 0px #00295933;
@@ -21,12 +30,16 @@
 }
 
 h1,
-h2 {
+h2,
+h3,
+h4,
+h6 {
   color: #0077a8;
 }
 
 .btn-primary {
   background-color: #0077a8;
+  border-color: #0077a8;
   padding: .7rem;
   font-size: 1.5rem;
 }
@@ -156,7 +169,8 @@ footer p {
 }
 
 .home-content {
-  padding: 3vh 3vh 3vh 0vh;
+  padding: 3vh 0 3vh 0;
+  min-width: 20vh;
 }
 
 .home-video {
@@ -166,8 +180,12 @@ footer p {
   color: #fff;
 }
 
+.home-card .card-text {
+  min-height: 171px !important;
+}
+
 .home-card {
-  min-height: 250px;
+  min-height: 300px;
   background-color: #0089c1;
   color: #fff;
   box-shadow: inset 0px 0px 5px 0px #016a85;
@@ -193,7 +211,19 @@ footer p {
   min-height: 150px;
 }
 
-/* Inloggen page */
+/* Inloggen / aanmelden page */
+.register-succ {
+  color: green;
+}
+
+.register-msg {
+  color: red !important;
+}
+
+input.register-err {
+  border: 2px solid red !important;
+}
+
 .fa-lock, .fa-sign-in-alt {
   margin-top: 1vh;
 }
@@ -419,4 +449,69 @@ input[type=text]:placeholder, input[type=email]:placeholder, input[type=password
 }
 .info-nav li.active{
   color: #023a52;
+}
+
+/* My Account page */
+.nav-pills {
+  background: #0089C1;
+  width: 20vh;
+}
+
+.nav-pills strong {
+  width: 50vh;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  background-color: #00608a;
+}
+
+.nav-pills a {
+  color: #fff;
+}
+
+.myacc-card {
+  padding-left: 0px;
+  padding-right: 0px;
+  border: 1px solid #0089c1;
+  margin-bottom: 2vh;
+}
+
+.myacc-card .card-header {
+  background-color: #0089c1;
+  color: #fff;
+}
+
+.mh-fs {
+  min-height: 35em;
+}
+
+.myacc-home-card {
+  background-color: #0089c1;
+  color: #fff;
+  box-shadow: inset 0px 0px 5px 0px #016a85;
+  border-left: 5px solid;
+  border-left-color: #016a85;
+}
+
+.myacc-home-card a {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.myacc-home-card a:active, .myacc-home-card a:hover {
+  color: #023a52;
+}
+
+.myacc-home-card .card-title {
+  font-weight: 700;
+}
+
+.myacc-home-card .card-text {
+  min-height: 150px;
+}
+
+#editpersonalinfo .btn-primary, #editaddress .btn-primary {
+  padding: .375rem .75rem;
+  font-size: 1rem;
 }
