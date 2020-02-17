@@ -1,4 +1,5 @@
 <?php
+// Check if session variable is set.
 if (isset($_SESSION["register"])) {
   switch ($_SESSION["register"]) {
     case "error":

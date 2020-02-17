@@ -15,7 +15,7 @@
   </div>
 </div>
 
-<!-- Card Links -->
+<!-- Card Links - Recent News - Link to game - Link to contact -->
 <div class="container-fluid bg-grey">
   <div class="container">
     <div class="row">

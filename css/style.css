@@ -515,3 +515,8 @@ input[type=text]:placeholder, input[type=email]:placeholder, input[type=password
   padding: .375rem .75rem;
   font-size: 1rem;
 }
+
+strong#user-info {
+  width: 4vh;
+  min-width: 4vh;
+}

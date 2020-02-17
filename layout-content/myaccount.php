@@ -1,4 +1,5 @@
 <?php
+// Assign users that are allowed to visit this page
 $userrole = ['Subscriber', 'Administrator', 'Super Admin'];
 include("./php-scripts/security.php");
 
@@ -17,6 +18,7 @@ $sql = "SELECT p.* from `pro3_personalinfo` p
         where u.userid = '$id'";
 $result1 = mysqli_query($conn, $sql);
 $pinfo = mysqli_fetch_assoc($result1);
+$fullname = $pinfo["name"] . ' ' . $pinfo["infix"] . ' ' . $pinfo["lastname"];
 ?>
 
 <!-- Content -->
@@ -112,28 +114,29 @@ $pinfo = mysqli_fetch_assoc($result1);
               <div class="card-header">
                 Mijn gegevens:
               </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item"><strong class="col-6">Naam:</strong><span><?php echo $pinfo["name"] . ' ' . $pinfo["infix"] . ' ' . $pinfo["lastname"]; ?></span></li>
-                <li class="list-group-item"><strong>Geboortedatum:</strong><span><?php echo $pinfo["birthday"]; ?></span></li>
-                <li class="list-group-item"><strong>E-mail:</strong><span><?php echo $userinfo["email"] ?></span></li>
-                <li class="list-group-item"><strong>Gebruikersrechten:</strong><span><?php echo $userinfo["userrole"] ?></span></li>
+              <ul class="list-group">
+                <li class="list-group-item"><p>Gebruikersnaam:</p><strong><?php echo $userinfo["username"]; ?></strong></li>
+                <li class="list-group-item"><p>Naam:</p><strong><?php echo $fullname; ?></strong></li>
+                <li class="list-group-item"><p>Geboortedatum:</p><strong><?php echo $pinfo["birthday"]; ?></strong></li>
+                <li class="list-group-item"><p>E-mail:</p><strong><?php echo $userinfo["email"]; ?></strong></li>
+                <li class="list-group-item"><p>Gebruikersrechten:</p><strong><?php echo $userinfo["userrole"]; ?></strong></li>
               </ul>
             </div>
             <div class="card col-8 myacc-card">
               <div class="card-header">
                 Mijn adres:
               </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item"><strong>Straatnaam:</strong><span><?php echo $pinfo["streetname"] ?></span></li>
-                <li class="list-group-item"><strong>Postcode:</strong><span><?php echo $pinfo["postalcode"] ?></span></li>
-                <li class="list-group-item"><strong>Stad:</strong><span><?php echo $pinfo["city"] ?></span></li>
+              <ul class="list-group">
+                <li class="list-group-item"><p>Straatnaam:</p><strong><?php echo $pinfo["streetname"]; ?></strong></li>
+                <li class="list-group-item"><p>Postcode:</p><strong><?php echo $pinfo["postalcode"]; ?></strong></li>
+                <li class="list-group-item"><p>Stad:</p><strong><?php echo $pinfo["city"]; ?></strong></li>
               </ul>
             </div>
             <div class="card col-8 myacc-card">
               <div class="card-header">
                 Wijzigen:
               </div>
-              <ul class="list-group list-group-flush">
+              <ul class="list-group">
                 <button type="button" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#editpersonalinfo"><span>Mijn gegevens wijzigen</span></button>
                 <button type="button" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#editaddress"><span>Mijn adres wijzigen</span></button>
                 <button type="button" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#editlogin"><span>Mijn e-mail / wachtwoord wijzigen</span></button>
@@ -222,7 +225,7 @@ $pinfo = mysqli_fetch_assoc($result1);
   </div>
 </div>
 
-<!-- Modal adres wijzigen -->
+<!-- Modal login gegevens wijzigen -->
 <div class="modal fade" id="editlogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">

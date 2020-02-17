@@ -1,4 +1,5 @@
 <?php
+// Check if session variable is set.
 if (isset($_SESSION["login"]))
   switch ($_SESSION["login"]) {
     case "success":
