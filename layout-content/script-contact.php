@@ -9,6 +9,7 @@ $contactemail = sanitize($_POST["contactemail"]);
 $contactnumber = (($_POST["contactnumber"]) ? sanitize($_POST["contactnumber"]) : "");
 $contactmessage = sanitize($_POST["contactmessage"]);
 
+// Query opstellen gebaseerd op of gebruiker is ingelogd of niet.
 if (isset($_SESSION["id"])) {
   // Controleren of gebruiker is ingelogd of niet.
   // Hierop gebaseerd word er een query verstuurd naar de database.
@@ -57,25 +58,53 @@ if (!empty($contactname)) {
                     <head>
                     <title>Page Title</title>
                     <style>
-                      h1 {
-                        background-color: rgb(200, 120, 23);
-                        padding: 1em;
-                        width: 50%;
-                      }
                     </style>
                     </head>
-                  <body>                  
-                    <h1>Beste gebruiker,</h1>
-                    <p>" . $contactmessage . "</p>
-                    <p>Met vriendelijke groet,</p>
-                    <p></p>
-                    <p>" . $contactname . "</p>                  
+                    <body style='margin: 0; padding: 0;'> 
+                    <table align='center' border='0' cellpadding='0' cellspacing='0' width='600'>
+                      <tr>
+                        <td bgcolor='#ffffff' style='padding: 10px 0 15px 0; font-family: Arial, sans-serif; font-size: 20px; line-height: 20px;'>
+                          <b>Beste meneer/mevrouw,</b>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td bgcolor='#ffffff' style='padding: 0 0 15px 0; font-family: Arial, sans-serif; font-size: 18px; line-height: 20px;'>
+                          <b>Vraag of opmerking:</b>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style='color: #153643; padding: 0 0 15px 0; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;'>
+                          <p>" . $contactmessage . "</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td bgcolor='#ffffff' style='padding: 0 0 15px 0; font-family: Arial, sans-serif; font-size: 18px; line-height: 20px;'>
+                          <b>Mijn contactgegevens:</b>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td bgcolor='#ffffff' style='font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;'>
+                          <p>" . $contactnumber . "</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td bgcolor='#ffffff' style='font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;'>
+                          <p>" . $contactemail . "</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style='color: #153643; padding: 20px 0 30px 0; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;'>
+                          <p>Met vriendelijke groet,</p>
+                          <p>" . $contactname . "</p>
+                        </td>
+                      </tr>
+                    </table>                
                   </body>
                   </html>";
 
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type: text/html;charset=UTF-8" . "\r\n";
-        $headers .= "From: " . $contactname . "@customer.nl" . "\r\n";
+        $headers .= "From: " . $contactemail . "\r\n";
         $headers .= "Cc: 327068@student.mboutrecht.nl;" . "\r\n";
         $headers .= "Bcc: jemx@mboutrecht.nl";
 

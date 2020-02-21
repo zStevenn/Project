@@ -4,7 +4,7 @@
       <div class="col-12 col-md-4">
         <h5 class="footer-text">Patienten Vereniging Hersenletsel</h5>
         <p>
-          Afasie is een soort van dyslexie op steroiden - Mathijs Elbertsen
+          “Afasie is een soort van dyslexie op steroiden” - Mathijs Elbertsen
         </p>
       </div>
       <div class="col-12 col-md-2">

@@ -45,8 +45,10 @@ if (isset($_SESSION["choosepw"]))
 
     <!-- Wachtwoordformulier -->
     <form action="./index.php?content=script-kiespwverify" method="post" class="vlr">
-      <input type="password" id="password" class="fadeIn second " name="password" placeholder="Wachtwoord">
-      <input type="password" id="checkpassword" class="fadeIn third " name="checkpassword" placeholder="Herhaal wachtwoord">
+      <input type="text" id="firstname" class="fadeIn first " name="firstname" placeholder="Voornaam">
+      <input type="text" id="lastname" class="fadeIn second " name="lastname" placeholder="Achternaam">
+      <input type="password" id="password" class="fadeIn second " name="password" placeholder="Wachtwoord*" required>
+      <input type="password" id="checkpassword" class="fadeIn third " name="checkpassword" placeholder="Herhaal wachtwoord*" required>
       <div class="<?php if (isset($pwclasses)) echo $pwclasses; ?>"><?php if (isset($choosepwmsg)) echo $choosepwmsg; ?></div>
       <input type="submit" class="fadeIn fourth" value="Wachtwoord bevestigen">
       <input type="hidden" value="<?php if (isset($_GET["id"])) echo $_GET["id"]; ?>" name="id">

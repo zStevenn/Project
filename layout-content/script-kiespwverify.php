@@ -2,6 +2,8 @@
   include("./php-scripts/connectDB.php");
   include("./php-scripts/functions.php");
 
+  $firstname = sanitize($_POST["firstname"]);
+  $lastname = sanitize($_POST["lastname"]);
   $password = sanitize($_POST["password"]);
   $checkpassword = sanitize($_POST["checkpassword"]);
   $id = sanitize($_POST["id"]);
@@ -30,7 +32,14 @@
   
           $result = mysqli_query($conn, $sql);
 
-          if ( $result ) {
+          $sql = "UPDATE `pro3_personalinfo` 
+                  SET `name` = '$firstname',
+                        `lastname` = '$lastname'
+                  WHERE `userid` = $id";
+
+          $addname = mysqli_query($conn, $sql);
+
+          if ( $result && $addname ) {
             $_SESSION["choosepw"] = "success";
             header("Location: index.php?content=script-kiespw");
           } else {

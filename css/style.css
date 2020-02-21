@@ -3,11 +3,6 @@ html {
   scroll-behavior: smooth;
 }
 
-.responsive-img {
-  width: 100%;
-  height: auto;
-}
-
 .bg-grey {
   background-color: #0029591a;
   box-shadow: inset 0px 0px 5px 0px #00295933;

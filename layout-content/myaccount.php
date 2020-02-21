@@ -61,7 +61,7 @@ $fullname = $pinfo["name"] . ' ' . $pinfo["infix"] . ' ' . $pinfo["lastname"];
                   <div class="card myacc-home-card mt-2 mb-2">
                     <div class="card-body">
                       <h5 class="card-title">Afasie Experience!</h5>
-                      <p class="card-text"><img class="responsive-img" src="./img/game.png" alt="game.png"></p>
+                      <p class="card-text"><img class="img-fluid" src="./img/game.png" alt="game.png"></p>
                       <a href="index.php?content=spel" class="card-link">>> Speel nu!</a>
                     </div>
                   </div>
@@ -178,21 +178,19 @@ $fullname = $pinfo["name"] . ' ' . $pinfo["infix"] . ' ' . $pinfo["lastname"];
         </button>
       </div>
       <div class="modal-body">
-        <form action="#" method="post">
-          <input type="text" name="name" placeholder="Voornaam">
-          <input type="text" name="infix" placeholder="Tussenvoegsel">
-          <input type="text" name="lastname" placeholder="Achternaam">
-          <input type="text" name="birthday" placeholder="Geboortedatum">
+        <form action="index.php?content=script-user-pinfo" method="post" class="vlr">
+          <input type="text" name="name" placeholder="Voornaam" value="<?php echo $pinfo["name"]; ?>">
+          <input type="text" name="infix" placeholder="Tussenvoegsel" value="<?php echo $pinfo["infix"]; ?>">
+          <input type="text" name="lastname" placeholder="Achternaam" value="<?php echo $pinfo["lastname"]; ?>">
+          <input type="text" name="birthday" placeholder="Geboortedatum" value="<?php echo $pinfo["birthday"]; ?>">
           <input class="mt-4" type="password" name="vpassword" placeholder="Huidig wachtwoord">
           <input type="password" name="vpasswordc" placeholder="Herhaal huidig wachtwoord">
-          <div class="<?php if (isset($_SESSION["login"])) echo $pwclasses; ?>"><?php if (isset($_SESSION["login"])) echo $editerror; ?></div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Aanpassen</button>
           </div>
         </form>
       </div>
-
     </div>
   </div>
 </div>
@@ -208,13 +206,12 @@ $fullname = $pinfo["name"] . ' ' . $pinfo["infix"] . ' ' . $pinfo["lastname"];
         </button>
       </div>
       <div class="modal-body">
-        <form action="#" method="post">
-          <input type="text" name="streetname" placeholder="Straatnaam">
-          <input type="text" name="postalcode" placeholder="Postcode">
-          <input type="text" name="city" placeholder="Stad">
+        <form action="index.php?content=script-user-woon" method="post" class="vlr">
+          <input type="text" name="streetname" placeholder="Straatnaam" value="<?php echo $pinfo["streetname"]; ?>">
+          <input type="text" name="postalcode" placeholder="Postcode" value="<?php echo $pinfo["postalcode"] ?>">
+          <input type="text" name="city" placeholder="Stad" value="<?php echo $pinfo["city"]; ?>">
           <input class="mt-4" type="password" name="vpassword" placeholder="Huidig wachtwoord">
           <input type="password" name="vpasswordc" placeholder="Herhaal huidig wachtwoord">
-          <div class="<?php if (isset($_SESSION["login"])) echo $pwclasses; ?>"><?php if (isset($_SESSION["login"])) echo $editerror; ?></div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Aanpassen</button>
@@ -236,7 +233,7 @@ $fullname = $pinfo["name"] . ' ' . $pinfo["infix"] . ' ' . $pinfo["lastname"];
         </button>
       </div>
       <div class="modal-body">
-        <form action="#" method="post">
+        <form action="#" method="post" class="vlr">
           <input type="email" name="email" placeholder="Nieuwe e-mail">
           <input type="email" name="email" placeholder="Herhaal nieuwe e-mail">
           <input type="password" name="password" placeholder="Nieuwe wachtwoord">
@@ -244,7 +241,6 @@ $fullname = $pinfo["name"] . ' ' . $pinfo["infix"] . ' ' . $pinfo["lastname"];
           <input class="mt-4" type="email" name="email" placeholder="Huidig e-mail">
           <input type="password" name="vpassword" placeholder="Huidig wachtwoord">
           <input type="password" name="vpasswordc" placeholder="Herhaal huidig wachtwoord">
-          <div class="<?php if (isset($_SESSION["login"])) echo $pwclasses; ?>"><?php if (isset($_SESSION["login"])) echo $editerror; ?></div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Aanpassen</button>
