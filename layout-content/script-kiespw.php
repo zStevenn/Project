@@ -39,14 +39,13 @@ if (isset($_SESSION["choosepw"]))
   <div id="formContent">
     <!-- Icon -->
     <div class="fadeIn first">
-      <i class="fa fa-lock fa-5x"></i>
-      <p>Wachtwoord kiezen</p>
+      <i class="fas fa-lock fa-5x"></i>
+      <p>Registratie afronden</p>
     </div>
 
     <!-- Wachtwoordformulier -->
     <form action="./index.php?content=script-kiespwverify" method="post" class="vlr">
-      <input type="text" id="firstname" class="fadeIn first " name="firstname" placeholder="Voornaam">
-      <input type="text" id="lastname" class="fadeIn second " name="lastname" placeholder="Achternaam">
+      <input type="text" id="username" class="fadeIn first " name="username" placeholder="Gebruikersnaam">
       <input type="password" id="password" class="fadeIn second " name="password" placeholder="Wachtwoord*" required>
       <input type="password" id="checkpassword" class="fadeIn third " name="checkpassword" placeholder="Herhaal wachtwoord*" required>
       <div class="<?php if (isset($pwclasses)) echo $pwclasses; ?>"><?php if (isset($choosepwmsg)) echo $choosepwmsg; ?></div>

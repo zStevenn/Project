@@ -31,7 +31,7 @@ if (isset($_SESSION["login"]))
   <div id="formContent">
     <!-- Icon -->
     <div class="fadeIn first">
-      <i class="fa fa-lock fa-5x"></i>
+      <i class="fas fa-lock fa-5x"></i>
       <p>Inloggen</p>
     </div>
     <!-- Login formulier -->

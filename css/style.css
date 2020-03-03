@@ -53,6 +53,10 @@ h6 {
   color: #0089C1;
 }
 
+.fa-5x {
+  margin-top: 2vh;
+}
+
 /* Navbar */
 nav {
   background-color: #0089c1;
@@ -447,20 +451,18 @@ h2.active {
 }
 
 /* My Account page */
-.nav-pills {
-  background: #0089C1;
-  width: 20vh;
-}
+.tablelinks a, .tablelinks a:hover, .tablelinks a:active{
+  color: #212529;
+  display: block;
 
-.nav-pills strong {
-  width: 50vh;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-  background-color: #00608a;
 }
 
 .nav-pills a {
+  color: #fff;
+}
+
+.myacc-card thead {
+  background-color: #0089c1;
   color: #fff;
 }
 
@@ -469,11 +471,6 @@ h2.active {
   padding-right: 0px;
   border: 1px solid #0089c1;
   margin-bottom: 2vh;
-}
-
-.myacc-card .card-header {
-  background-color: #0089c1;
-  color: #fff;
 }
 
 .mh-fs {

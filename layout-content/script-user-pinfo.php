@@ -1,6 +1,6 @@
 <?php
 // Assign users that are allowed to visit this page
-$userrole = ['Subscriber', 'Administrator', 'Super Admin'];
+$userrole = [1,2,3];
 include("./php-scripts/security.php");
 
 // Include connectDB and set variables
@@ -32,31 +32,34 @@ if (!empty($password) && !empty($passwordc)) {
                     `infix` = '$infix',
                     `lastname` = '$lastname',
                     `birthday` = '$birthday'
-                WHERE `userid` = '$id'";
+                WHERE `userid` = '$id';";
 
         $result = mysqli_query($conn, $sql);
+        var_dump($result);
+        var_dump($sql);
+        exit();
 
         if ($result) {
           //echo "User personal info was succesfully edited";
-          header("Location: index.php?content=myaccount");
+          header("Location: index.php?content=myaccount#gegevens");
         } else {
           //echo "Query was not send to database";
-          header("Location: index.php?content=myaccount");
+          header("Location: index.php?content=myaccount#gegevens");
         }
       } else {
         //echo"Password and database password do not match";
-        header("Location: index.php?content=myaccount");
+        header("Location: index.php?content=myaccount#gegevens");
       }
     } else {
       //echo"User does not exist in database";
-      header("Location: index.php?content=myaccount");
+      header("Location: index.php?content=myaccount#gegevens");
     }
   } else {
     //echo"If passwords do not match";
-    header("Location: index.php?content=myaccount");
+    header("Location: index.php?content=myaccount#gegevens");
   }
 } else {
   //echo"If passwords or password is/are not entered";
-  header("Location: index.php?content=myaccount");
+  header("Location: index.php?content=myaccount#gegevens");
 }
 ?>

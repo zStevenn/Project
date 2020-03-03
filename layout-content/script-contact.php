@@ -20,7 +20,7 @@ if (isset($_SESSION["id"])) {
                                             `cemail`,
                                             `cnumber`,
                                             `cmessage`,
-                                            `userid_FK`)
+                                            `userid`)
                                       VALUES (NULL,
                                             '$contactname',
                                             '$contactemail',
@@ -33,7 +33,7 @@ if (isset($_SESSION["id"])) {
                                             `cemail`,
                                             `cnumber`,
                                             `cmessage`,
-                                            `userid_FK`)
+                                            `userid`)
                                       VALUES (NULL,
                                             '$contactname',
                                             '$contactemail',

@@ -1,6 +1,6 @@
 <?php
 // Assign users that are allowed to visit this page
-$userrole = ['Subscriber', 'Administrator', 'Super Admin'];
+$userrole = [1,2,3];
 include("./php-scripts/security.php");
 
 // Include connectDB and set variables
@@ -36,26 +36,26 @@ if (!empty($password) && !empty($passwordc)) {
 
         if ($result) {
           // User personal living info was succesfully edited
-          header("Location: index.php?content=myaccount");
+          header("Location: index.php?content=myaccount#gegevens");
         } else {
           // Query was not send to database
-          header("Location: index.php?content=myaccount");
+          header("Location: index.php?content=myaccount#gegevens");
         }
       } else {
         // Password and database password do not match
-        header("Location: index.php?content=myaccount");
+        header("Location: index.php?content=myaccount#gegevens");
       }
     } else {
       // User does not exist in database
-      header("Location: index.php?content=myaccount");
+      header("Location: index.php?content=myaccount#gegevens");
     }
   } else {
     // If passwords do not match
-    header("Location: index.php?content=myaccount");
+    header("Location: index.php?content=myaccount#gegevens");
   }
 } else {
   // If passwords or password is/are not entered
-  header("Location: index.php?content=myaccount");
+  header("Location: index.php?content=myaccount#gegevens");
 }
 
 ?>

@@ -18,7 +18,7 @@ if (!empty($email)) {
     // echo '<div class="alert alert-info" role="alert">Het door u ingevoerde e-mailadres is al in gebruik, kies een ander e-mailadres</div>';
     $_SESSION["register"] = "error";
     $_SESSION["email"] = $email;
-    header("Location: index.php?content=aanmelden");
+    //header("Location: index.php?content=aanmelden");
   } else {
     $password = RandomString();
     $password_hash = password_hash($password, PASSWORD_BCRYPT);
@@ -27,13 +27,13 @@ if (!empty($email)) {
                                   `email`, 
                                   `password`,
                                   `username`,
-                                  `userrole`,
+                                  `userroleid`,
                                   `salt`)
                           VALUES (NULL,
                                   '$email',
                                   '$password',
                                   NULL,
-                                  'Subscriber',
+                                  1,
                                   NULL)";
 
     $result = mysqli_query($conn, $sql);

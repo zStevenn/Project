@@ -27,7 +27,7 @@ if (isset($_SESSION["register"])) {
   <div id="formContent">
     <!-- Icon -->
     <div class="fadeIn first">
-      <i class="fa fa-lock fa-5x"></i>
+      <i class="fas fa-lock fa-5x"></i>
       <p>Aanmelden</p>
     </div>
 

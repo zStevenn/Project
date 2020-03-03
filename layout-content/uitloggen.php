@@ -1,5 +1,5 @@
 <?php
-  $userrole = ["Subscriber", "Administrator", "Super Admin"];
+  $userrole = [1,2,3];
   include("./php-scripts/security.php");
 
   session_unset();
