@@ -1,6 +1,6 @@
 <?php
 // Assign users that are allowed to visit this page
-$userrole = [1,2,3];
+$userrole = [1,2,3,4];
 include("./php-scripts/security.php");
 
 // Include connectDB and set variables
