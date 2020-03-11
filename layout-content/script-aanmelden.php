@@ -31,9 +31,7 @@ if (!empty($email)) {
                           VALUES (NULL,
                                   '$email',
                                   '$password',
-                                  NULL,
-                                  'Subscriber',
-                                  NULL)";
+                                  'customer')";
 
     $result = mysqli_query($conn, $sql);
 
