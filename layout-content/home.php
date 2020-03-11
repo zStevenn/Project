@@ -32,7 +32,7 @@
         <div class="card home-card">
           <div class="card-body">
             <h5 class="card-title">Afasie Experience!</h5>
-            <p class="card-text"><img class="responsive-img" src="./img/game.png" alt="game.png"></p>
+            <p class="card-text"><img class="img-fluid" src="./img/game.png" alt="game.png"></p>
             <a href="index.php?content=spel" class="card-link">>> Probeer nu</a>
           </div>
         </div>

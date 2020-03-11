@@ -1,11 +1,12 @@
 <?php
 // Assign users that are allowed to visit this page
-$userrole = ['Subscriber', 'Administrator', 'Super Admin'];
+$userrole = [1,2,3,4];
 include("./php-scripts/security.php");
 
 // Opvragen van gegevens van de huidige inlogger
 include("./php-scripts/connectDB.php");
 $id = $_SESSION["id"];
+$userrole = $_SESSION["userrole"];
 
 // Ophalen van alle user info
 $sql = "SELECT * FROM `pro3_users` WHERE `userid` = '$id'";
@@ -19,238 +20,213 @@ $sql = "SELECT p.* from `pro3_personalinfo` p
 $result1 = mysqli_query($conn, $sql);
 $pinfo = mysqli_fetch_assoc($result1);
 $fullname = $pinfo["name"] . ' ' . $pinfo["infix"] . ' ' . $pinfo["lastname"];
+
+$sql = "SELECT r.userrole from `pro3_userrole` r
+        LEFT JOIN `pro3_users` u on u.userroleid = r.userroleid
+        WHERE u.userroleid = '$userrole'";
+$result2 = mysqli_query($conn, $sql);
+$userrole = mysqli_fetch_row($result2);
+
 ?>
 
-<!-- Content -->
-<div class="container-fluid mt-4 mh-fs">
+
+<!-- Navbar op de myaccount pagina -->
+<div class="container-fluid">
   <div class="container">
-    <div class="row mb-4">
-      <!-- Navigatie op my account pagina -->
-      <div class="col-12 col-lg-2">
-        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-          <a class="nav-link" id="v-pills-gegevens-tab" data-toggle="pill" href="#v-pills-gegevens" role="tab" aria-controls="v-pills-gegevens" aria-selected="false">Gegevens</a>
-          <a class="nav-link" id="v-pills-highscores-tab" data-toggle="pill" href="#v-pills-highscores" role="tab" aria-controls="v-pills-highscores" aria-selected="false">Highscores</a>
-          <a class="nav-link" id="v-pills-berichten-tab" data-toggle="pill" href="#v-pills-berichten" role="tab" aria-controls="v-pills-berichten" aria-selected="false">Berichten</a>
-          <a class="nav-link" id="v-pills-instellingen-tab" data-toggle="pill" href="#v-pills-instellingen" role="tab" aria-controls="v-pills-instellingen" aria-selected="false">Instellingen</a>
-        </div>
+    <div class="row">
+      <div class="col-12">
+        <nav class="nav nav-pills nav-fill">
+          <a class="nav-item nav-link" href="#home">Home</a>
+          <a class="nav-item nav-link" href="#gegevens">Gegevens</a>
+          <a class="nav-item nav-link" href="#highscores">Highscores</a>
+          <a class="nav-item nav-link" href="#berichten">Berichten</a>
+          <a class="nav-item nav-link" href="#aanpassen">Aanpassen/wijzigen</a>
+        </nav>
       </div>
+    </div>
+  </div>
+</div>
 
-      <!-- Content van navigaties -->
-      <div class="col-10">
-        <div class="tab-content" id="v-pills-tabContent">
-          <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-            <h2><?php echo 'Welkom ' . ($pinfo["userid"] ? $pinfo["name"] : 'Gebruiker') . '!'  ?></h2>
-            <hr>
-            <!-- Card Links -->
-            <div class="container">
-              <div class="row">
-                <div class="col-12 col-md-6 col-lg-4">
-                  <div class="card myacc-home-card mt-2 mb-2">
-                    <div class="card-body">
-                      <h5 class="card-title">Gegevens wijzigen</h5>
-                      <p class="card-text">
-                        Personaliseer je eigen pagina, en voeg je gegevens toe!
-                        We gebruiken uw informatie om uw ervaring op onze website te verbeteren.
-                      </p>
-                      <a class="card-link" id="v-pills-gegevens-tab" data-toggle="pill" href="#v-pills-gegevens" role="tab" aria-controls="v-pills-gegevens" aria-selected="false">>> Gegevens aanpassen</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                  <div class="card myacc-home-card mt-2 mb-2">
-                    <div class="card-body">
-                      <h5 class="card-title">Afasie Experience!</h5>
-                      <p class="card-text"><img class="responsive-img" src="./img/game.png" alt="game.png"></p>
-                      <a href="index.php?content=spel" class="card-link">>> Speel nu!</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                  <div class="card myacc-home-card mt-2 mb-2">
-                    <div class="card-body">
-                      <h5 class="card-title">Highscores</h5>
-                      <p class="card-text">Bekijk nu je persoonlijke highscores!</p>
-                      <a class="card-link" id="v-pills-highscores-tab" data-toggle="pill" href="#v-pills-highscores" role="tab" aria-controls="v-pills-highscores" aria-selected="false">>> Bekijk highscores</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4">
-                  <div class="card myacc-home-card mt-2 mb-2">
-                    <div class="card-body">
-                      <h5 class="card-title">Empty</h5>
-                      <p class="card-text">Ppp</p>
-                      <a href="#" class="card-link">>> Neem contact op</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                  <div class="card myacc-home-card mt-2 mb-2">
-                    <div class="card-body">
-                      <h5 class="card-title">Empty</h5>
-                      <p class="card-text">Ppp</p>
-                      <a href="#" class="card-link">>> Neem contact op</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                  <div class="card myacc-home-card mt-2 mb-2">
-                    <div class="card-body">
-                      <h5 class="card-title">Empty</h5>
-                      <p class="card-text">Ppp</p>
-                      <a href="#" class="card-link">>> Neem contact op</a>
-                    </div>
-                  </div>
+<!-- Content van pagina -->
+<div class="container-fluid">
+  <div class="container">
+    <!-- Cards en intro text -->
+    <div class="row">
+      <div class="col-12">
+        <h2 id="home" class="text-center mt-2"><?php echo 'Welkom ' . (!empty($pinfo["name"]) ? $pinfo["name"] : $userinfo["username"]) . '!'  ?></h2>
+        <h5 class="text-center">Op deze pagina kun je je gegevens bekijken.</h5>
+        <hr>
+        <!-- Container met cards -->
+        <div class="container">
+          <div class="row">
+            <!-- Gegevens wijzigen -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="card myacc-home-card mt-2 mb-2">
+                <div class="card-body">
+                  <h5 class="card-title">Gegevens wijzigen</h5>
+                  <p class="card-text">
+                    Personaliseer je eigen pagina, en voeg je gegevens toe!
+                    We gebruiken uw informatie om uw ervaring op onze website te verbeteren.
+                  </p>
+                  <a class="card-link" href="#aanpassen">>> Gegevens aanpassen</a>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="tab-pane fade" id="v-pills-gegevens" role="tabpanel" aria-labelledby="v-pills-gegevens-tab">
-            <h2>Mijn persoonlijke gegevens</h2>
-            <hr>
-            <div class="card col-8 myacc-card">
-              <div class="card-header">
-                Mijn gegevens:
+            <!-- Game spelen -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="card myacc-home-card mt-2 mb-2">
+                <div class="card-body">
+                  <h5 class="card-title">Afasie Experience!</h5>
+                  <p class="card-text"><a href="index.php?content=spel"><img class="img-fluid" src="./img/game.png" alt="game.png"></a></p>
+                  <a href="index.php?content=spel" class="card-link">>> Speel nu!</a>
+                </div>
               </div>
-              <ul class="list-group">
-                <li class="list-group-item"><p>Gebruikersnaam:</p><strong><?php echo $userinfo["username"]; ?></strong></li>
-                <li class="list-group-item"><p>Naam:</p><strong><?php echo $fullname; ?></strong></li>
-                <li class="list-group-item"><p>Geboortedatum:</p><strong><?php echo $pinfo["birthday"]; ?></strong></li>
-                <li class="list-group-item"><p>E-mail:</p><strong><?php echo $userinfo["email"]; ?></strong></li>
-                <li class="list-group-item"><p>Gebruikersrechten:</p><strong><?php echo $userinfo["userrole"]; ?></strong></li>
-              </ul>
             </div>
-            <div class="card col-8 myacc-card">
-              <div class="card-header">
-                Mijn adres:
+            <!-- Highscores bekijken -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="card myacc-home-card mt-2 mb-2">
+                <div class="card-body">
+                  <h5 class="card-title">Highscores</h5>
+                  <p class="card-text">Bekijk nu je persoonlijke highscores!</p>
+                  <a class="card-link" href="#highscores">>> Bekijk highscores</a>
+                </div>
               </div>
-              <ul class="list-group">
-                <li class="list-group-item"><p>Straatnaam:</p><strong><?php echo $pinfo["streetname"]; ?></strong></li>
-                <li class="list-group-item"><p>Postcode:</p><strong><?php echo $pinfo["postalcode"]; ?></strong></li>
-                <li class="list-group-item"><p>Stad:</p><strong><?php echo $pinfo["city"]; ?></strong></li>
-              </ul>
             </div>
-            <div class="card col-8 myacc-card">
-              <div class="card-header">
-                Wijzigen:
-              </div>
-              <ul class="list-group">
-                <button type="button" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#editpersonalinfo"><span>Mijn gegevens wijzigen</span></button>
-                <button type="button" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#editaddress"><span>Mijn adres wijzigen</span></button>
-                <button type="button" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#editlogin"><span>Mijn e-mail / wachtwoord wijzigen</span></button>
-              </ul>
-            </div>
-          </div>
 
-          <div class="tab-pane fade" id="v-pills-highscores" role="tabpanel" aria-labelledby="v-pills-highscores-tab">
-            <h2>Mijn highscores</h2>
-            <hr>
-            <!-- Tabel met highscores -->
-          </div>
-
-          <div class="tab-pane fade" id="v-pills-berichten" role="tabpanel" aria-labelledby="v-pills-berichten-tab">
-            <h2>Mijn berichten</h2>
-            <hr>
-            <!-- Accordions met berichten -->
-          </div>
-
-          <div class="tab-pane fade" id="v-pills-instellingen" role="tabpanel" aria-labelledby="v-pills-instellingen-tab">
-            <h2>Mijn instellingen</h2>
-            <hr>
-            <!-- Forms met instellingen -->
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- Modal gegevens wijzigen -->
-<div class="modal fade" id="editpersonalinfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Mijn gegevens wijzigen</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <!-- Persoonlijke gegevens -->
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-center" id="gegevens">Mijn persoonlijke gegevens</h2>
+        <hr>
       </div>
-      <div class="modal-body">
-        <form action="#" method="post">
-          <input type="text" name="name" placeholder="Voornaam">
-          <input type="text" name="infix" placeholder="Tussenvoegsel">
-          <input type="text" name="lastname" placeholder="Achternaam">
-          <input type="text" name="birthday" placeholder="Geboortedatum">
-          <input class="mt-4" type="password" name="vpassword" placeholder="Huidig wachtwoord">
-          <input type="password" name="vpasswordc" placeholder="Herhaal huidig wachtwoord">
-          <div class="<?php if (isset($_SESSION["login"])) echo $pwclasses; ?>"><?php if (isset($_SESSION["login"])) echo $editerror; ?></div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Aanpassen</button>
+      <!-- Persoonlijke info -->
+      <table class="table table-hover col-12 col-md-5 myacc-card">
+        <thead>
+          <tr>
+            <th scope="col">Mijn gegevens</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gebruikersnaam</td>
+            <td><?php echo $userinfo["username"]; ?></td>
+          </tr>
+          <tr>
+            <td>Naam</td>
+            <td><?php echo $fullname; ?></td>
+          </tr>
+          <tr>
+            <td>Geboortedatum</td>
+            <td><?php echo $pinfo["birthday"]; ?></td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td><?php echo $userinfo["email"]; ?></td>
+          </tr>
+          <tr>
+            <td>Gebruikersrechten</td>
+            <td><?php echo $userrole[0]; ?></td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Mijn adres gegevens -->
+      <table class="table table-hover col-12 offset-0 col-md-5 offset-md-2 myacc-card">
+        <thead>
+          <tr>
+            <th scope="col">Mijn adres</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Straatnaam</td>
+            <td><?php echo $pinfo["streetname"]; ?></td>
+          </tr>
+          <tr>
+            <td>Postcode</td>
+            <td><?php echo $pinfo["postalcode"]; ?></td>
+          </tr>
+          <tr>
+            <td>Stad</td>
+            <td><?php echo $pinfo["city"]; ?></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Highscores -->
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-center" id="highscores">Highscores</h2>
+        <hr>
+      </div>
+      <table class="table table-hover col-12 col-md-6 myacc-card tablelinks">
+        <thead>
+          <tr>
+            <th scope="col">Highscores</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>echo highscores</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Berichten -->
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-center" id="berichten">Mijn berichten</h2>
+        <hr>
+      </div>
+      <div class="col-6" id="accordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Collapsible Group Item #1
+              </button>
+            </h5>
           </div>
-        </form>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+
+        </div>
       </div>
 
     </div>
-  </div>
-</div>
 
-<!-- Modal adres wijzigen -->
-<div class="modal fade" id="editaddress" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Mijn adres wijzigen</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <!-- Aanpassen/wijzigen -->
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-center" id="aanpassen">Aanpassen/wijzigen</h2>
+        <hr>
       </div>
-      <div class="modal-body">
-        <form action="#" method="post">
-          <input type="text" name="streetname" placeholder="Straatnaam">
-          <input type="text" name="postalcode" placeholder="Postcode">
-          <input type="text" name="city" placeholder="Stad">
-          <input class="mt-4" type="password" name="vpassword" placeholder="Huidig wachtwoord">
-          <input type="password" name="vpasswordc" placeholder="Herhaal huidig wachtwoord">
-          <div class="<?php if (isset($_SESSION["login"])) echo $pwclasses; ?>"><?php if (isset($_SESSION["login"])) echo $editerror; ?></div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Aanpassen</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal login gegevens wijzigen -->
-<div class="modal fade" id="editlogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Mijn login gegevens wijzigen</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="#" method="post">
-          <input type="email" name="email" placeholder="Nieuwe e-mail">
-          <input type="email" name="email" placeholder="Herhaal nieuwe e-mail">
-          <input type="password" name="password" placeholder="Nieuwe wachtwoord">
-          <input type="password" name="password" placeholder="Herhaal nieuwe wachtwoord">
-          <input class="mt-4" type="email" name="email" placeholder="Huidig e-mail">
-          <input type="password" name="vpassword" placeholder="Huidig wachtwoord">
-          <input type="password" name="vpasswordc" placeholder="Herhaal huidig wachtwoord">
-          <div class="<?php if (isset($_SESSION["login"])) echo $pwclasses; ?>"><?php if (isset($_SESSION["login"])) echo $editerror; ?></div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Aanpassen</button>
-          </div>
-        </form>
-      </div>
+      <table class="table table-hover col-12 col-md-6 myacc-card tablelinks">
+        <thead>
+          <tr>
+            <th scope="col">Aanpassen/wijzigen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="index.php?content=editpersonalinfo">Mijn gegevens wijzigen</a></td>
+          </tr>
+          <tr>
+            <td><a href="index.php?content=editaddress">Mijn adres wijzigen</a></td>
+          </tr>
+          <tr>
+            <td><a href="index.php?content=editlogin">Mijn e-mail / wachtwoord wijzigen</a></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

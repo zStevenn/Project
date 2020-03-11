@@ -1,10 +1,10 @@
 <?php
 // Inloggen op database en database selecteren
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "pro3";
+define("SERVERNAME", "localhost");
+define("USERNAME", "pro3_superadmin");
+define("PASSWORD", "g2WFXQrHGwWP8exF");
+define("DATABASENAME", "pro3");
 
 // Contact maken met MySQL-Server
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASENAME);
 ?>

@@ -20,7 +20,7 @@ if (!empty($email) && !empty($password)) {
     if (password_verify($password.$salt, $hash)) {
       // Variabelen zetten als wachtwoorden overeenkomen (inloggen)
       $_SESSION["id"] = $record["userid"];
-      $_SESSION["userrole"] = $record["userrole"];
+      $_SESSION["userrole"] = $record["userroleid"];
       $_SESSION["email"] = $record["email"];
       header("Location: index.php?content=redirect");
     } else {

@@ -5,10 +5,15 @@ if (isset($_SESSION["register"])) {
     case "error":
       $registermsg = "Het ingevoerde e-mail adres is al in gebruik.";
       $classes = "register-err register-msg";
+      $email = $_SESSION["email"];
+      unset($_SESSION["register"]);
       break;
     case "success":
       $registermsg = "Er is een verificatiemail naar uw e-mail adres gestuurd.";
       $classes = "register-succ";
+      $email = $_SESSION["email"];
+      unset($_SESSION["register"]);
+      unset($_SESSION["email"]);
       break;
     default:
       header("Location: index.php?content=error404");
@@ -22,14 +27,14 @@ if (isset($_SESSION["register"])) {
   <div id="formContent">
     <!-- Icon -->
     <div class="fadeIn first">
-      <i class="fa fa-lock fa-5x"></i>
+      <i class="fas fa-lock fa-5x"></i>
       <p>Aanmelden</p>
     </div>
 
     <!-- Aanmeldformulier -->
-    <form action="./index.php?content=script-aanmelden" method="post">
-      <input type="email" id="register" class="fadeIn second <?php if (isset($_SESSION["register"])) echo $classes; ?>" name="email" placeholder="Email" value="<?php if (isset($_SESSION["email"])) echo $_SESSION["email"] ?>">
-      <div class="fadeIn second <?php if (isset($_SESSION["register"])) echo $classes; ?>"><?php if (isset($_SESSION["register"])) echo $registermsg; ?></div>
+    <form action="./index.php?content=script-aanmelden" method="post" class="vlr">
+      <input type="email" id="register" class="fadeIn second <?php if (isset($classes)) echo $classes; ?>" name="email" placeholder="Email" value="<?php if (isset($mail)) echo $mail ?>">
+      <div class="fadeIn second <?php if (isset($classes)) echo $classes; ?>"><?php if (isset($registermsg)) echo $registermsg; ?></div>
       <input type="submit" class="fadeIn third" value="Registeren">
     </form>
 

@@ -2,6 +2,7 @@
   include("./php-scripts/connectDB.php");
   include("./php-scripts/functions.php");
 
+  $username = sanitize($_POST["username"]);
   $password = sanitize($_POST["password"]);
   $checkpassword = sanitize($_POST["checkpassword"]);
   $id = sanitize($_POST["id"]);
@@ -25,6 +26,7 @@
   
           $sql = "UPDATE `pro3_users` 
                   SET `password` = '$hashed_password',
+                      `username` = '$username',
                       `salt` = '$salt'
                   WHERE `userid` = $id";
   
