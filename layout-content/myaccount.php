@@ -35,9 +35,8 @@ $result3 = mysqli_query($conn, $sql);
 $highscores = "";
 
 while ($record = mysqli_fetch_assoc($result3)) {
-  $highscores .= "<tr><td scope='row'><i class='fas fa-envelope'></i> Contactmail " . $record["cname"] . " <span class='float-right'><a href='index.php?content=readmessage&id= " . $record["contactid"] . "'>Bekijk bericht</a></span></td>
-                  </tr>
-                  ";
+  $highscores .= "<tr><td scope='row'><i class='fas fa-envelope'></i> Contactmail " . $record["cname"] . " " . $record["cdate"] ."
+  <span class='float-right'><a href='index.php?content=readmessage&id= " . $record["contactid"] . "'>Bekijk bericht</a></span></td></tr>";
 };
 
 ?>

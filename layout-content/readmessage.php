@@ -37,7 +37,7 @@ $message = mysqli_fetch_assoc($result);
       </div>
       <div>
         <p>Vraag/opmerking:</p>
-        <input type="text" class="fadeIn third" value="<?php echo $message["cmessage"] ?>" disabled>
+        <textarea class="fadeIn third" rows="8" cols="40" disabled><?php echo $message["cmessage"] ?></textarea>
       </div>
       <a class="btn btn-danger fadeIn fourth m-4" href="index.php?content=myaccount#berichten" role="button">Terug naar overzicht</a>
     </form>

@@ -20,12 +20,14 @@ if (isset($_SESSION["id"])) {
                                             `cemail`,
                                             `cnumber`,
                                             `cmessage`,
+                                            `cdate`,
                                             `userid`)
                                       VALUES (NULL,
                                             '$contactname',
                                             '$contactemail',
                                             '$contactnumber',
                                             '$contactmessage',
+                                            CURRENT_TIMESTAMP(),
                                             '$id');";
 } else {
   $sql = "INSERT INTO `pro3_contactmsg` (`contactid`,
@@ -33,12 +35,14 @@ if (isset($_SESSION["id"])) {
                                             `cemail`,
                                             `cnumber`,
                                             `cmessage`,
+                                            `cdate`,
                                             `userid`)
                                       VALUES (NULL,
                                             '$contactname',
                                             '$contactemail',
                                             '$contactnumber',
                                             '$contactmessage',
+                                            CURRENT_TIMESTAMP(),
                                             NULL);";
 }
 
