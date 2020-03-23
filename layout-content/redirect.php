@@ -1,6 +1,4 @@
 <?php
-var_dump($_SESSION["userrole"]);
-
 // Stuurt gebruiker door naar hun eigen pagina als ze zijn ingelogd, zo niet worden ze doorgestuurd naar inlog pagina.
 if (isset($_SESSION["userrole"]))
   switch ($_SESSION["userrole"]) {
@@ -14,7 +12,7 @@ if (isset($_SESSION["userrole"]))
       header("Location: index.php?content=myaccount");
       break;
     case "4":
-      header("Location: index.php?content=myaccount");
+      header("Location: index.php?content=godmode");
       break;
   } else {
   header("Location: index.php?content=inloggen");

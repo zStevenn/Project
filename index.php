@@ -47,7 +47,6 @@ session_start(); ?>
   <!-- link app.js -->
   <script src="./js/app.js"></script>
 
-
 </body>
 
 </html>

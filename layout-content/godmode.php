@@ -1,6 +1,6 @@
 <?php
 // Assign users that are allowed to visit this page
-$userrole = [2, 3, 4];
+$userrole = [4];
 include("./php-scripts/security.php");
 
 // Opvragen van gegevens van de huidige inlogger
@@ -29,16 +29,20 @@ $result2 = mysqli_query($conn, $sql);
 $userrole = mysqli_fetch_row($result2);
 
 // Ophalen van alle berichten verstuurd door deze gebruiker
-$sql = "SELECT * FROM `pro3_contactmsg` WHERE `userid` = '$id'";
+$sql = "SELECT * FROM `pro3_contactmsg`";
 $result3 = mysqli_query($conn, $sql);
 
 $highscores = "";
 
 while ($record = mysqli_fetch_assoc($result3)) {
-  $highscores .= "<tr><td scope='row'><i class='fas fa-envelope'></i> Contactmail " . $record["cname"] . " " . $record["cdate"] . "
-  <span class='float-right'><a href='index.php?content=readmessage&id=" . $record["contactid"] . "'>Bekijk bericht</a></span></td></tr>";
+  $highscores .= "<tr><td scope='row'><i class='fas fa-envelope'></i> Contactmail " . $record["cname"] . "</td>
+                <td>" . $record["cdate"] . "</td>
+                <td>" . $record["cname"] . "</td>
+                <td>" . $record["cnumber"] . "</td>
+                <td><span><a href='index.php?content=readmessage&id= " . $record["contactid"] . "'>Bekijk bericht</a></span></td>
+                <td><a href='index.php?content=godmode_delete&id=" . $record["contactid"] . "&type=mail' ><i class='fas fa-trash-alt'></i></a></td>
+                </tr>";
 };
-
 ?>
 
 <!-- Navbar op de myaccount pagina -->
@@ -50,7 +54,6 @@ while ($record = mysqli_fetch_assoc($result3)) {
           <a class="nav-item nav-link" href="#gegevens">Gegevens</a>
           <a class="nav-item nav-link" href="#highscores">Highscores</a>
           <a class="nav-item nav-link" href="#berichten">Berichten</a>
-          <a class="nav-item nav-link" href="#aanpassen">Aanpassen/wijzigen</a>
         </nav>
       </div>
     </div>
@@ -145,46 +148,23 @@ while ($record = mysqli_fetch_assoc($result3)) {
     <!-- Berichten -->
     <div class="row">
       <div class="col-12">
-        <h2 class="text-center" id="berichten">Mijn berichten</h2>
+        <h2 class="text-center" id="berichten">Berichten</h2>
         <hr>
       </div>
       <div class="col-12">
         <table id="tableMessages" class="table table-hover myacc-card tablelinks" width="100%">
           <thead>
             <tr>
-              <th scope="col">Berichten</th>
+              <th scope="col">Bericht</th>
+              <th scope="col">Datum</th>
+              <th scope="col">Gebruiker</th>
+              <th scope="col">Nummer</th>
+              <th scope="col">Bekijk</th>
+              <th scope="col">Wissen</th>
             </tr>
           </thead>
           <tbody>
             <?php echo $highscores ?>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Aanpassen/wijzigen -->
-    <div class="row">
-      <div class="col-12">
-        <h2 class="text-center" id="aanpassen">Aanpassen/wijzigen</h2>
-        <hr>
-      </div>
-      <div class="col-12">
-        <table class="table table-hover myacc-card tablelinks" width="100%">
-          <thead>
-            <tr>
-              <th scope="col">Aanpassen/wijzigen</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><a href="index.php?content=editpersonalinfo">Mijn gegevens wijzigen</a></td>
-            </tr>
-            <tr>
-              <td><a href="index.php?content=editaddress">Mijn adres wijzigen</a></td>
-            </tr>
-            <tr>
-              <td><a href="index.php?content=editlogin">Mijn e-mail / wachtwoord wijzigen</a></td>
-            </tr>
           </tbody>
         </table>
       </div>
