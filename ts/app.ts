@@ -1,7 +1,6 @@
-// var show_modal = false;
-
-// if (show_modal = true) {
-  // $(function loginmodal() {
-  //   $('#loginmodal').modal('show');
-  // })
-// }
+$(document).ready(function() {
+  $('#tableMessages, #tableHighscores').DataTable({
+    "info": false
+  });
+  $('.dataTables_length').addClass('bs-select');
+});

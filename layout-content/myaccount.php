@@ -35,12 +35,11 @@ $result3 = mysqli_query($conn, $sql);
 $highscores = "";
 
 while ($record = mysqli_fetch_assoc($result3)) {
-  $highscores .= "<tr><td scope='row'><i class='fas fa-envelope'></i> Contactmail " . $record["cname"] . " " . $record["cdate"] ."
+  $highscores .= "<tr><td scope='row'><i class='fas fa-envelope'></i> Contactmail " . $record["cname"] . " " . $record["cdate"] . "
   <span class='float-right'><a href='index.php?content=readmessage&id= " . $record["contactid"] . "'>Bekijk bericht</a></span></td></tr>";
 };
 
 ?>
-
 
 <!-- Navbar op de myaccount pagina -->
 <div class="container-fluid">
@@ -176,18 +175,20 @@ while ($record = mysqli_fetch_assoc($result3)) {
         <h2 class="text-center" id="highscores">Highscores</h2>
         <hr>
       </div>
-      <table class="table table-hover col-12 col-md-6 myacc-card tablelinks">
-        <thead>
-          <tr>
-            <th scope="col">Highscores</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>echo highscores</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="col-12">
+        <table id="tableHighscores" class="table table-hover myacc-card tablelinks" width="100%">
+          <thead>
+            <tr>
+              <th scope="col">Highscores</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>echo highscores</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <!-- Berichten -->
     <div class="row">
@@ -195,16 +196,18 @@ while ($record = mysqli_fetch_assoc($result3)) {
         <h2 class="text-center" id="berichten">Mijn berichten</h2>
         <hr>
       </div>
-      <table class="table table-hover col-12 col-md-6 myacc-card tablelinks">
-        <thead>
-          <tr>
-            <th scope="col">Berichten</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php echo $highscores ?>
-        </tbody>
-      </table>
+      <div class="col-12">
+        <table id="tableMessages" class="table table-hover myacc-card tablelinks" width="100%">
+          <thead>
+            <tr>
+              <th scope="col">Berichten</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php echo $highscores ?>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- Aanpassen/wijzigen -->
@@ -213,24 +216,26 @@ while ($record = mysqli_fetch_assoc($result3)) {
         <h2 class="text-center" id="aanpassen">Aanpassen/wijzigen</h2>
         <hr>
       </div>
-      <table class="table table-hover col-12 col-md-6 myacc-card tablelinks">
-        <thead>
-          <tr>
-            <th scope="col">Aanpassen/wijzigen</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="index.php?content=editpersonalinfo">Mijn gegevens wijzigen</a></td>
-          </tr>
-          <tr>
-            <td><a href="index.php?content=editaddress">Mijn adres wijzigen</a></td>
-          </tr>
-          <tr>
-            <td><a href="index.php?content=editlogin">Mijn e-mail / wachtwoord wijzigen</a></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="col-12">
+        <table class="table table-hover myacc-card tablelinks" width="100%">
+          <thead>
+            <tr>
+              <th scope="col">Aanpassen/wijzigen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="index.php?content=editpersonalinfo">Mijn gegevens wijzigen</a></td>
+            </tr>
+            <tr>
+              <td><a href="index.php?content=editaddress">Mijn adres wijzigen</a></td>
+            </tr>
+            <tr>
+              <td><a href="index.php?content=editlogin">Mijn e-mail / wachtwoord wijzigen</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

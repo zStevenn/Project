@@ -3,6 +3,14 @@ html {
   scroll-behavior: smooth;
 }
 
+.card .card-body .card-text {
+  color: #fff !important;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #0089C1 !important;
+}
+
 .bg-grey {
   background-color: #0029591a;
   box-shadow: inset 0px 0px 5px 0px #00295933;
