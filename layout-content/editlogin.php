@@ -1,6 +1,6 @@
 <?php
 // Assign users that are allowed to visit this page
-$userrole = [1,2,3,4];
+$userrole = [1, 2, 3, 4];
 include("./php-scripts/security.php");
 
 // Opvragen van gegevens van de huidige inlogger
@@ -40,7 +40,9 @@ $fullname = $pinfo["name"] . ' ' . $pinfo["infix"] . ' ' . $pinfo["lastname"];
       <input class="fadeIn second" type="password" name="vpassword" placeholder="Huidig wachtwoord">
       <input class="fadeIn second" type="password" name="vpasswordc" placeholder="Herhaal huidig wachtwoord">
       <input type="submit" class="fadeIn third" value="Aanpassen">
-
+      <div>
+        <a class="btn btn-danger fadeIn fourth mb-4" href="index.php?content=myaccount#aanpassen" role="button">Annuleren</a>
+      </div>
     </form>
   </div>
 </div>

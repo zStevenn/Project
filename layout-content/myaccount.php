@@ -1,6 +1,6 @@
 <?php
 // Assign users that are allowed to visit this page
-$userrole = [1,2,3,4];
+$userrole = [1, 2, 3, 4];
 include("./php-scripts/security.php");
 
 // Opvragen van gegevens van de huidige inlogger
@@ -21,11 +21,23 @@ $result1 = mysqli_query($conn, $sql);
 $pinfo = mysqli_fetch_assoc($result1);
 $fullname = $pinfo["name"] . ' ' . $pinfo["infix"] . ' ' . $pinfo["lastname"];
 
+// Ophalen van userrole van de gebruiker
 $sql = "SELECT r.userrole from `pro3_userrole` r
         LEFT JOIN `pro3_users` u on u.userroleid = r.userroleid
         WHERE u.userroleid = '$userrole'";
 $result2 = mysqli_query($conn, $sql);
 $userrole = mysqli_fetch_row($result2);
+
+// Ophalen van alle berichten verstuurd door deze gebruiker
+$sql = "SELECT * FROM `pro3_contactmsg` WHERE `userid` = '$id'";
+$result3 = mysqli_query($conn, $sql);
+
+$highscores = "";
+
+while ($record = mysqli_fetch_assoc($result3)) {
+  $highscores .= "<tr><td scope='row'><i class='fas fa-envelope'></i> Contactmail " . $record["cname"] . " " . $record["cdate"] ."
+  <span class='float-right'><a href='index.php?content=readmessage&id= " . $record["contactid"] . "'>Bekijk bericht</a></span></td></tr>";
+};
 
 ?>
 
@@ -183,24 +195,16 @@ $userrole = mysqli_fetch_row($result2);
         <h2 class="text-center" id="berichten">Mijn berichten</h2>
         <hr>
       </div>
-      <div class="col-6" id="accordion">
-        <div class="card">
-          <div class="card-header" id="headingOne">
-            <h5 class="mb-0">
-              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Collapsible Group Item #1
-              </button>
-            </h5>
-          </div>
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-            </div>
-          </div>
-
-        </div>
-      </div>
-
+      <table class="table table-hover col-12 col-md-6 myacc-card tablelinks">
+        <thead>
+          <tr>
+            <th scope="col">Berichten</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php echo $highscores ?>
+        </tbody>
+      </table>
     </div>
 
     <!-- Aanpassen/wijzigen -->
