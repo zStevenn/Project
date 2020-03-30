@@ -16,6 +16,9 @@
           <li class="nav-item <?php if ($info == 'info-4') echo 'active' ?>">
             <a class="nav-link" href="./index.php?content=informatie&info=info-4">Tips</a>
           </li>
+          <li class="nav-item <?php if ($info == 'info-5') echo 'active' ?>">
+            <a class="nav-link" href="./index.php?content=informatie&info=info-5">Behandeling</a>
+          </li>
         </ul>
       </div>
       <div class="col-10">
