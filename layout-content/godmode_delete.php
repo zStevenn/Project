@@ -10,16 +10,18 @@ $id = $_GET["id"];
 switch ($type) {
   case "mail":
     $tablename = "pro3_contactmsg";
+    $databaseid = "contactid";
   break;
   case "highscore":
     $tablename = "pro3_highscores";
+    $databaseid = "highscoreid";
   break;
   default:
   header("Location: index.php?content=error404");
 }
 
 $sql = "DELETE FROM `$tablename` 
-        where `contactid` = '$id'";
+        where `$databaseid` = '$id'";
 
 $query = mysqli_query($conn, $sql);
 

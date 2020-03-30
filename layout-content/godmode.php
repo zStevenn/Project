@@ -28,19 +28,33 @@ $sql = "SELECT r.userrole from `pro3_userrole` r
 $result2 = mysqli_query($conn, $sql);
 $userrole = mysqli_fetch_row($result2);
 
+// Ophalen van highscores van de gebruiker
+$sql = "SELECT * FROM `pro3_highscores` WHERE `userid` = '$id'";
+$hsresult = mysqli_query($conn, $sql);
+
+$highscores = "";
+
+while ($highscore = mysqli_fetch_assoc($hsresult)) {
+  $highscores .= "<tr>
+                    <td>" . $highscore["score"] . "</td>
+                    <td scope='row'>" . $highscore["naam"] . "</td>
+                    <td><a href='index.php?content=godmode_delete&id=" . $highscore["highscoreid"] . "&type=highscore' ><i class='fas fa-trash-alt'></i></a></td>
+                  </tr>";
+};
+
 // Ophalen van alle berichten verstuurd door deze gebruiker
 $sql = "SELECT * FROM `pro3_contactmsg`";
 $result3 = mysqli_query($conn, $sql);
 
-$highscores = "";
+$berichten = "";
 
-while ($record = mysqli_fetch_assoc($result3)) {
-  $highscores .= "<tr><td scope='row'><i class='fas fa-envelope'></i> Contactmail " . $record["cname"] . "</td>
-                <td>" . $record["cdate"] . "</td>
-                <td>" . $record["cname"] . "</td>
-                <td>" . $record["cnumber"] . "</td>
-                <td><span><a href='index.php?content=readmessage&id= " . $record["contactid"] . "'>Bekijk bericht</a></span></td>
-                <td><a href='index.php?content=godmode_delete&id=" . $record["contactid"] . "&type=mail' ><i class='fas fa-trash-alt'></i></a></td>
+while ($bericht = mysqli_fetch_assoc($result3)) {
+  $berichten .= "<tr><td scope='row'><i class='fas fa-envelope'></i> Contactmail " . $bericht["cname"] . "</td>
+                <td>" . $bericht["cdate"] . "</td>
+                <td>" . $bericht["cname"] . "</td>
+                <td>" . $bericht["cnumber"] . "</td>
+                <td><span><a href='index.php?content=readmessage&id= " . $bericht["contactid"] . "'>Bekijk bericht</a></span></td>
+                <td><a href='index.php?content=godmode_delete&id=" . $bericht["contactid"] . "&type=mail' ><i class='fas fa-trash-alt'></i></a></td>
                 </tr>";
 };
 ?>
@@ -134,13 +148,13 @@ while ($record = mysqli_fetch_assoc($result3)) {
         <table id="tableHighscores" class="table table-hover myacc-card tablelinks" width="100%">
           <thead>
             <tr>
-              <th scope="col">Highscores</th>
+              <th scope="col">Score</th>
+              <th scope="col">Naam</th>
+              <th scope="col">Wissen</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>echo highscores</td>
-            </tr>
+            <?php echo $highscores ?>
           </tbody>
         </table>
       </div>
@@ -157,14 +171,14 @@ while ($record = mysqli_fetch_assoc($result3)) {
             <tr>
               <th scope="col">Bericht</th>
               <th scope="col">Datum</th>
-              <th scope="col">Gebruiker</th>
+              <th scope="col">Naam</th>
               <th scope="col">Nummer</th>
               <th scope="col">Bekijk</th>
               <th scope="col">Wissen</th>
             </tr>
           </thead>
           <tbody>
-            <?php echo $highscores ?>
+            <?php echo $berichten ?>
           </tbody>
         </table>
       </div>

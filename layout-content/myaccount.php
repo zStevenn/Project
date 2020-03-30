@@ -28,15 +28,28 @@ $sql = "SELECT r.userrole from `pro3_userrole` r
 $result2 = mysqli_query($conn, $sql);
 $userrole = mysqli_fetch_row($result2);
 
+// Ophalen van highscores van de gebruiker
+$sql = "SELECT * FROM `pro3_highscores` WHERE `userid` = '$id'";
+$hsresult = mysqli_query($conn, $sql);
+
+$highscores = "";
+
+while ($highscore = mysqli_fetch_assoc($hsresult)) {
+  $highscores .= "<tr>
+                    <td scope='row'>" . $highscore["naam"] . "</td>
+                    <td>" . $highscore["score"] ."</td>
+                  </tr>";
+};
+
 // Ophalen van alle berichten verstuurd door deze gebruiker
 $sql = "SELECT * FROM `pro3_contactmsg` WHERE `userid` = '$id'";
 $result3 = mysqli_query($conn, $sql);
 
-$highscores = "";
+$berichten = "";
 
-while ($record = mysqli_fetch_assoc($result3)) {
-  $highscores .= "<tr><td scope='row'><i class='fas fa-envelope'></i> Contactmail " . $record["cname"] . " " . $record["cdate"] . "
-  <span class='float-right'><a href='index.php?content=readmessage&id= " . $record["contactid"] . "'>Bekijk bericht</a></span></td></tr>";
+while ($bericht = mysqli_fetch_assoc($result3)) {
+  $berichten .= "<tr><td scope='row'><i class='fas fa-envelope'></i> Contactmail " . $bericht["cname"] . " " . $bericht["cdate"] . "
+  <span class='float-right'><a href='index.php?content=readmessage&id= " . $bericht["contactid"] . "'>Bekijk bericht</a></span></td></tr>";
 };
 
 ?>
@@ -179,13 +192,12 @@ while ($record = mysqli_fetch_assoc($result3)) {
         <table id="tableHighscores" class="table table-hover myacc-card tablelinks" width="100%">
           <thead>
             <tr>
-              <th scope="col">Highscores</th>
+              <th scope="col">Naam</th>
+              <th scope="col">Score</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>echo highscores</td>
-            </tr>
+            <?php echo $highscores ?>
           </tbody>
         </table>
       </div>
@@ -204,7 +216,7 @@ while ($record = mysqli_fetch_assoc($result3)) {
             </tr>
           </thead>
           <tbody>
-            <?php echo $highscores ?>
+            <?php echo $berichten ?>
           </tbody>
         </table>
       </div>

@@ -10,12 +10,13 @@ session_start(); ?>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="./css/style.css">
+
   <script src="https://kit.fontawesome.com/a8013dc036.js" crossorigin="anonymous"></script>
   <!-- Material Design Bootstrap -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css" rel="stylesheet">
   <!-- MDBootstrap Datatables  -->
   <link href="./css/addons/datatables.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
   <title>Afasie</title>
 </head>
 
