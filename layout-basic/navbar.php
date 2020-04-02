@@ -1,6 +1,6 @@
 <?php $content = (isset($_GET['content']) ? $_GET['content'] : false); ?>
 <div class="upper-navbar">
-  <div class="container-fluid">
+  <div class="container-fluid upper-navbar-content">
     <div class="container">
       <div class="row">
         <div class="col-12">

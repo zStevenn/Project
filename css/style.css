@@ -67,6 +67,7 @@ h6 {
 
 /* Navbar */
 nav {
+  position: relative;
   background-color: #0089c1;
   display: inline-block;
   box-shadow: inset 0px 0px 5px 0px #016a85;
@@ -86,6 +87,11 @@ nav ul>li>a:hover, nav li.active>a {
   color: #fff;
   text-decoration: none;
   transition: all ease-in-out 0.2s;
+}
+
+nav ul>li>a::before {
+  position: relative;
+
 }
 
 .navbar {
