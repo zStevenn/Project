@@ -4,7 +4,7 @@
       <div class="col-12 col-md-4">
         <h5 class="footer-text">Patienten Vereniging Hersenletsel</h5>
         <p>
-          “Afasie is een soort van dyslexie op steroiden” - Mathijs Elbertsen
+          “One of the hardest things is having words in your heart you can't utter” - James Earls Jones
         </p>
       </div>
       <div class="col-12 col-md-2">
